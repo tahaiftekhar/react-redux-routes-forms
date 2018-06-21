@@ -11,7 +11,7 @@ export default function(state = {}, action){
             return posts;
         case DELETE_POST:
             //Need to change here to delete probably
-            return state;
+            return _.omit(state, action.payload);
     }
     return state;
 };
