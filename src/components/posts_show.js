@@ -10,10 +10,15 @@ class PostsShow extends Component{
         this.props.fetchPost(id);
     }
     render(){
+        console.log(this.props.post);
         return(
             <div>Posts Show</div>
         );
     }
 }
 
-export default connect(null, { fetchPost })(PostsShow);
+function mapStateToProps({ posts }, ownProps){
+    return { post: posts[ownProps.match.params.id] };
+}
+
+export default connect(mapStateToProps, { fetchPost })(PostsShow);
