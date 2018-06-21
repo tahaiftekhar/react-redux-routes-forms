@@ -5,10 +5,12 @@ import { Link } from 'react-router-dom';
 
 class PostsShow extends Component{
     componentDidMount(){
-        const { id } = this.props.match.params;
-        // For const { id, a, b, c } = this.props.match.params; if multiple route args
-        //or const id = this.props.match.params.id;
-        this.props.fetchPost(id);
+        if (!this.props.post) {     //So it does not fetch the record again, if already present through index page
+            const {id} = this.props.match.params;
+            // For const { id, a, b, c } = this.props.match.params; if multiple route args
+            //or const id = this.props.match.params.id;
+            this.props.fetchPost(id);
+        }
     }
     render(){
         if (!this.props.post){
